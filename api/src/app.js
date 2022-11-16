@@ -24,7 +24,12 @@ server.use((req, res, next) => {
 });
 
 server.use('/diets', diets);
-server.use('/recipes', recipes)
+server.use('/recipes', recipes);
+server.use((err , req, res, next) => {
+  return res.json({
+    message: err.message
+  })
+})
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
